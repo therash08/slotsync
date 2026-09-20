@@ -1,26 +1,370 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *, [data-theme="motion-black"], [data-theme="motion-black"] *));
+
+:root,
+[data-theme="warm-light"],
+[data-theme="light"] {
+  /* Educational Dashboard Palette: Soft Lavender Workspace with Deep Purple & Warm Orange Accents */
+  --background: #F6F4FB;
+  --secondary-bg: #EFEAF7;
+  --surface-canvas: #F7F5FA;
+  --surface-canvas-subtle: #EFEAF5;
+  --surface-card: #FFFFFF;
+  --surface-card-hover: #FAF8FE;
+  --surface-elevated: #FFFFFF;
+  --popover: #FFFFFF;
+  --popover-foreground: #1D1530;
+  --foreground: #1D1530;
+  --text-primary: #1D1530;
+  --text-secondary: #5A4E75;
+  --text-muted: #7C7099;
+
+  --sidebar-bg: #1A1033;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-text: #B4A9CE;
+  --sidebar-text-hover: #FFFFFF;
+  --sidebar-active-bg: #FF7A00;
+  --sidebar-active-text: #FFFFFF;
+
+  --accent-orange: #FF7A00;
+  --accent-orange-hover: #EA6C00;
+  --accent-orange-tint: rgba(255, 122, 0, 0.12);
+
+  --accent: #7C6CFF;
+  --accent-hover: #6854F5;
+  --accent-tint: rgba(124, 108, 255, 0.10);
+  --accent-highlight: #A78BFA;
+
+  --primary: #6B46C1;
+  --primary-hover: #5832A8;
+  --primary-foreground: #FFFFFF;
+  --secondary-accent: #805AD5;
+  --soft-accent: #F1EDFC;
+
+  --border: #EDE8F7;
+  --border-subtle: rgba(107, 70, 193, 0.10);
+  --border-highlight: rgba(107, 70, 193, 0.22);
+  --soft-border: #F3EFFC;
+  --input: #EDE8F7;
+  --ring: #6B46C1;
+  --radius: 1rem;
+
+  /* Semantic status colors (Soft Academic) */
+  --conflict: #DC2626;
+  --conflict-bg: #FEF2F2;
+  --warning: #EA580C;
+  --warning-bg: #FFF7ED;
+  --success: #059669;
+  --success-bg: #ECFDF5;
+  --info: #4F46E5;
+  --info-bg: #EEF2FF;
+
+  --ambient-glow: rgba(107, 70, 193, 0.06);
+  --card-shadow: 0 2px 10px rgba(29, 21, 48, 0.04), 0 1px 3px rgba(29, 21, 48, 0.02);
+  --card-shadow-hover: 0 12px 28px -4px rgba(29, 21, 48, 0.08), 0 2px 6px -1px rgba(29, 21, 48, 0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+.dark,
+[data-theme="motion-black"],
+[data-theme="dark"] {
+  /* Refined Modern Academic SaaS Palette: Deep Midnight Plum with layered surfaces & soft glows */
+  --background: #0B0818;
+  --secondary-bg: #100D22;
+  --surface-canvas: #0B0818;
+  --surface-canvas-subtle: #0E0B1F;
+  --surface-card: #131024;
+  --surface-card-hover: #18142E;
+  --surface-elevated: #1B1735;
+  --surface-highlight: #221D42;
+  --hover-surface: #221D42;
+  --popover: #131024;
+  --popover-foreground: #F6F2FF;
+  --foreground: #F6F2FF;
+  --text-primary: #F6F2FF;
+  --text-secondary: #B3ACC8;
+  --text-muted: #80769A;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --sidebar-bg: #0D0A1C;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-text: #9B8EB5;
+  --sidebar-text-hover: #FFFFFF;
+  --sidebar-active-bg: #FF7A00;
+  --sidebar-active-text: #FFFFFF;
+
+  --accent-orange: #FF7A00;
+  --accent-orange-hover: #EA6C00;
+  --accent-orange-tint: rgba(255, 122, 0, 0.18);
+
+  --accent: #7C6CFF;
+  --accent-hover: #6A56FF;
+  --accent-tint: rgba(124, 108, 255, 0.14);
+  --accent-highlight: #A78BFA;
+  --accent-glow: rgba(124, 108, 255, 0.25);
+
+  --primary: #8B5CF6;
+  --primary-hover: #7C3AED;
+  --primary-bright: #A78BFA;
+  --primary-foreground: #0B0818;
+  --secondary-accent: #C084FC;
+  --electric-accent: #60A5FA;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-highlight: rgba(167, 139, 250, 0.18);
+  --soft-border: rgba(255, 255, 255, 0.05);
+  --strong-border: rgba(167, 139, 250, 0.32);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #7C6CFF;
+
+  /* Semantic status colors (Subtle Dark Mode) */
+  --conflict: #FB7185;
+  --conflict-bg: rgba(244, 63, 94, 0.12);
+  --warning: #FB923C;
+  --warning-bg: rgba(249, 115, 22, 0.12);
+  --success: #34D399;
+  --success-bg: rgba(16, 185, 129, 0.12);
+  --info: #818CF8;
+  --info-bg: rgba(99, 102, 241, 0.12);
+
+  --ambient-glow: rgba(124, 108, 255, 0.14);
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --card-shadow-hover: 0 14px 34px -4px rgba(124, 108, 255, 0.18), 0 0 0 1px rgba(167, 139, 250, 0.25);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Warm Light Background: Ivory canvas, restrained directional light, faint technical grid */
+:root body,
+[data-theme="warm-light"] body,
+[data-theme="light"] body {
+  background-color: #F7F4EF;
+  color: #20232E;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(101, 84, 217, 0.04), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(124, 58, 237, 0.025), transparent),
+    linear-gradient(to right, rgba(230, 224, 216, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 224, 216, 0.35) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-attachment: fixed;
+}
+
+/* Modern Dark SaaS Background: Layered deep midnight plum, ambient violet aura, no harsh pure black */
+.dark body,
+[data-theme="motion-black"] body,
+[data-theme="dark"] body {
+  background-color: #0B0818;
+  color: #F6F2FF;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -15%, rgba(124, 108, 255, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 65%, rgba(167, 139, 250, 0.07), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 15% 35%, rgba(245, 158, 11, 0.035), transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+  background-attachment: fixed;
+}
+
+/* Signature Motion Black Ambient Drift (18–24s duration) */
+@keyframes ambientGlowDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate(25px, -20px) scale(1.12);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.18;
+  }
+}
+
+.ambient-motion-orb {
+  animation: ambientGlowDrift 20s ease-in-out infinite;
+}
+
+.dark-aurora-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-motion-orb {
+    animation: none !important;
+  }
+  body, * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Conflict striped texture for class blocks */
+.bg-conflict-pattern {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(220, 38, 38, 0.07),
+    rgba(220, 38, 38, 0.07) 8px,
+    rgba(220, 38, 38, 0.16) 8px,
+    rgba(220, 38, 38, 0.16) 16px
+  );
+}
+
+.dark .bg-conflict-pattern,
+[data-theme="motion-black"] .bg-conflict-pattern {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(251, 113, 133, 0.15),
+    rgba(251, 113, 133, 0.15) 8px,
+    rgba(251, 113, 133, 0.32) 8px,
+    rgba(251, 113, 133, 0.32) 16px
+  );
+}
+
+/* Subtle 3D Card Hover Lift & Tactile Classes */
+.hover-card-lift {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease;
+}
+
+.hover-card-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Tactile button & control press */
+.tactile-press {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.15s ease,
+              background-color 0.15s ease;
+}
+
+.tactile-press:active {
+  transform: scale(0.98);
+}
+
+/* Surface Elevation Hierarchy */
+.surface-canvas {
+  background-color: var(--surface-canvas);
+}
+
+.surface-base {
+  background-color: var(--secondary-bg);
+  border-color: var(--border-subtle);
+}
+
+.surface-card {
+  background-color: var(--surface-card);
+  border-color: var(--border-subtle);
+  box-shadow: var(--card-shadow);
+}
+
+.surface-elevated {
+  background-color: var(--surface-elevated);
+  border-color: var(--border-subtle);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.surface-floating {
+  background-color: var(--surface-elevated);
+  border-color: var(--border-subtle);
+  box-shadow: 0 16px 36px -6px rgba(32, 35, 46, 0.12), 0 0 0 1px var(--border-subtle);
+}
+
+.dark .surface-floating {
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--strong-border);
+}
+
+/* Modern SaaS Card System with Refined Borders and Gentle Depth */
+.saas-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.04);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saas-card:hover {
+  background-color: var(--surface-card-hover);
+  border-color: var(--border-highlight);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px -4px rgba(124, 108, 255, 0.12), 0 2px 8px -1px rgba(0, 0, 0, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Spotlight Container for Interactive Demos & Showcases */
+.spotlight-container {
+  position: relative;
+  background: radial-gradient(800px circle at 50% 0%, rgba(124, 108, 255, 0.08), transparent 70%), var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.75rem;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 40px -10px rgba(124, 108, 255, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Soft Gradient Divider (replaces harsh border-y) */
+.soft-section-divider {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(167, 139, 250, 0.15) 35%, rgba(167, 139, 250, 0.25) 50%, rgba(167, 139, 250, 0.15) 65%, transparent 100%);
+}
+
+.soft-section-fade {
+  background: linear-gradient(180deg, var(--surface-canvas) 0%, var(--surface-canvas-subtle) 50%, var(--surface-canvas) 100%);
+}
+
+/* Motion Black hover elevation */
+.dark .hover-card-lift:hover,
+[data-theme="motion-black"] .hover-card-lift:hover {
+  box-shadow: 0 10px 24px -4px rgba(139, 140, 255, 0.22),
+              0 0 0 1px rgba(139, 140, 255, 0.35);
+  border-color: rgba(139, 140, 255, 0.40);
+}
+
+/* Warm Light hover elevation */
+:root .hover-card-lift:hover,
+[data-theme="warm-light"] .hover-card-lift:hover {
+  box-shadow: 0 10px 24px -4px rgba(32, 35, 46, 0.08),
+              0 2px 5px -1px rgba(32, 35, 46, 0.03),
+              0 0 0 1px rgba(101, 84, 217, 0.20);
+  border-color: #D8D2C8;
+}
+
+/* 3D Perspective Canvas Container (Hero/Decorative only) */
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.card-3d-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle modern scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(157, 167, 187, 0.25);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(157, 167, 187, 0.45);
 }
